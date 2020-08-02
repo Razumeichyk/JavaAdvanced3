@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import org.example.config.Info;
 import org.example.config.Person;
 import org.example.config.PropertiesCategory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,11 @@ public class PropertiesController {
     @Autowired
     private PropertiesCategory propertiesCategory;
 
+    @Autowired
     private Person person;
 
     @Autowired
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+    private Info info;
 
     @GetMapping("/category")
     public PropertiesCategory category(){
@@ -30,5 +30,10 @@ public class PropertiesController {
     public Person getPerson(){
         System.out.println(person.getVisitor().getAge());
         return person;
+    }
+
+    @GetMapping("/info")
+    public Info getInfo(){
+        return info;
     }
 }
